@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comparison Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Comparison Results</h1>
+    
+    <h2>First Table:</h2>
+    <p>Rows: {{ info1[0] }}, Columns: {{ info1[1] }}</p>
+    <div>{{ tables[0]|safe }}</div>
+    
+    <h2>Second Table:</h2>
+    <p>Rows: {{ info2[0] }}, Columns: {{ info2[1] }}</p>
+    <div>{{ tables[1]|safe }}</div>
+    
+    <h2>Differences:</h2>
+    <div>{{ tables[2]|safe }}</div>
+
+    <h2>Column Header Differences:</h2>
+    <ul>
+        <li><strong>Only in Table 1:</strong> {{ headers_diff['Only in Table 1']|join(', ') }}</li>
+        <li><strong>Only in Table 2:</strong> {{ headers_diff['Only in Table 2']|join(', ') }}</li>
+    </ul>
+    
+    <a href="{{ url_for('index') }}">Compare Another</a>
+</body>
+</html>
